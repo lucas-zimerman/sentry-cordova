@@ -118,12 +118,17 @@ jobs:
            key: ${{ hashFiles('src/ios/Cartfile') }}
        - name: Install Carthage
          if: steps.cache_built_carthage.outputs.cache-hit == ''
-         run: brew install carthage
+         run: brew install carthage 
        - name: Build Cocoa SDK from Carthage
-         if: steps.cache_built_carthage.outputs.cache-hit == ''
-         env:
-            GITHUB_ACCESS_TOKEN: ${{ secrets.GH_RELEASE_PAT }}
          run: make build
+       - name: Debug GH
+         shell: pwsh
+         run: |
+            ls
+            ls src
+            ls src/ios
+            ls src/ios/Carthage
+            ls src/ios/Carthage/Build
 
 
    job_artifacts:
