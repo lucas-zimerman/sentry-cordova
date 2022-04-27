@@ -118,7 +118,7 @@ jobs:
            key: ${{ hashFiles('src/ios/Cartfile') }}
        - name: Install Carthage
          if: steps.cache_built_carthage.outputs.cache-hit == ''
-         run: brew install carthage
+         run: brew install carthage 
        - name: Build Cocoa SDK from Carthage
          if: steps.cache_built_carthage.outputs.cache-hit == ''
          env:
